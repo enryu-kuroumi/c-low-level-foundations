@@ -11,7 +11,7 @@
 int main(int argc, char *argv[]) {
     int fd = open(argv[1], O_RDWR);
     if (fd < 0) {
-        perror("Błąd ");
+        perror("error ");
         return 1;
     }
     char n;
@@ -27,17 +27,17 @@ int main(int argc, char *argv[]) {
     int bread;
     while (1) {
         if (lseek(fd, read_pos, SEEK_SET) < 0) {
-            perror("Błąd lseek");
+            perror("lseek error");
             return 1;
         }
         bread = read(fd, buf, sizeof(buf));
         if (bread <= 0) break;
         if (lseek(fd, write_pos, SEEK_SET) < 0) {
-            perror("Błąd lseek");
+            perror("lseek error");
             return 1;
         }
         if (write(fd, buf, bread) != bread) {
-            perror("Błąd");
+            perror("error");
             return 1;
         }
         
@@ -45,12 +45,12 @@ int main(int argc, char *argv[]) {
         write_pos += bread;
     }
     if (ftruncate(fd, rozm-frln) < 0) {
-        perror("Błąd ftruncate");
+        perror("ftruncate error");
         close(fd);
         return 1;
     }
     if (close(fd) < 0) {
-        perror("Błąd ");
+        perror("error ");
         return 1;
     }
     return 0;
