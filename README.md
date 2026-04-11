@@ -25,8 +25,8 @@ Project Structure
 
         ftruncate: To physically resize the file on the disk after data shifting.
 To compile any of the modules, use the following command structure:
-        ```gcc -o output_name source_file.c```
+        ```gcc -o output_name source_file.c```  
 Execution (Example)   
-        ```./unix_file_remover data.txt```
+        ```./unix_file_remover data.txt```  
 Simple all in 1 command (example):
         ```gcc -Wall -Wextra -o output_name source_file.c && ./source_file.c```
