@@ -49,7 +49,6 @@ int main() {
     int tab[2][2]; 
     show(2, 2, tab);
     int *my_copy = copy(2, 2, tab);
-    copy(2, 2, tab);
     dealoc(my_copy);
     return 0;
 }
