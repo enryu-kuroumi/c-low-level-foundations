@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-int wyswietl(int rows, int cols, int a[rows][cols]) {
+int show(int rows, int cols, int a[rows][cols]) {
     int w = 1; 
 
    
@@ -47,7 +47,9 @@ void dealoc(int* arr2) {
 }
 int main() {
     int tab[2][2]; 
-    wyswietl(2, 2, tab);
+    show(2, 2, tab);
+    int *my_copy = copy(2, 2, tab);
     copy(2, 2, tab);
+    dealoc(my_copy);
     return 0;
 }
