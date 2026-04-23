@@ -20,5 +20,17 @@ bank_without: Parallel-programming/bank-balance-WITHOUT-mutex.c
 file_remover: System-Programming/file_line_remover.c
 	$(CC) $(CFLAGS) -o file_remover System-Programming/file_line_remover.c
 
+check-leaks: all
+	@echo "Line 1\nLine 2" > test_data.txt
+	
+	valgrind --leak-check=full --error-exitcode=1 ./dynamic_copy
+	valgrind --leak-check=full --error-exitcode=1 ./matrix_ops
+	valgrind --leak-check=full --error-exitcode=1 ./bank_with
+	valgrind --leak-check=full --error-exitcode=1 ./bank_without
+	valgrind --leak-check=full --error-exitcode=1 ./file_remover test_data.txt
+	
+	@rm -f test_data.txt
+	@echo "All memory checks passed"
+
 clean:
-	rm -f $(TARGETS)
+	rm -f $(TARGETS) test_data.txt
